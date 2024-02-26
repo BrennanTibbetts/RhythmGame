@@ -1,0 +1,102 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net6.0</TargetFramework>
+    <RollForward>Major</RollForward>
+    <PublishReadyToRun>false</PublishReadyToRun>
+    <TieredCompilation>false</TieredCompilation>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationManifest>app.manifest</ApplicationManifest>
+    <ApplicationIcon>Icon.ico</ApplicationIcon>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Remove="Commands\PowerCommands\**" />
+    <Compile Remove="State\GameStates\**" />
+    <Compile Remove="State\PlayerStates\**" />
+    <Compile Remove="State\PowerStates\**" />
+    <EmbeddedResource Remove="Commands\PowerCommands\**" />
+    <EmbeddedResource Remove="State\GameStates\**" />
+    <EmbeddedResource Remove="State\PlayerStates\**" />
+    <EmbeddedResource Remove="State\PowerStates\**" />
+    <None Remove="Commands\PowerCommands\**" />
+    <None Remove="State\GameStates\**" />
+    <None Remove="State\PlayerStates\**" />
+    <None Remove="State\PowerStates\**" />
+    <None Remove="HUD\" />
+    <None Remove="Content\obj\DesktopGL\net6.0\Chart\" />
+    <None Remove="Scoring System\" />
+    <None Remove="Buttons\" />
+    <None Remove="Commands\SelectionCommands\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="Effects\gradient.fx" />
+    <None Remove="Icon.ico" />
+    <None Remove="Icon.bmp" />
+    <None Remove="States\" />
+    <None Remove="State\" />
+    <None Remove="Commands\PlayerCommands\" />
+    <None Remove="Commands\GameCommands\" />
+    <None Remove="State\PlayerStates\" />
+    <None Remove="State\GameStates\" />
+    <None Remove="State\PowerStates\" />
+    <None Remove="Commands\PowerCommands\" />
+    <None Remove="Collisions\" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Icon.ico" />
+    <EmbeddedResource Include="Icon.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="MonoGame.Framework.DesktopGL" Version="3.8.1.303" />
+    <PackageReference Include="MonoGame.Content.Builder.Task" Version="3.8.1.303" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="CodeReviews\" />
+    <Folder Include="Commands\GameCommands\" />
+    <Folder Include="Content\obj\DesktopGL\net6.0\Chart\" />
+    <Folder Include="bin\Debug\net6.0\Chart\" />
+    <Folder Include="Scoring System\" />
+    <Folder Include="Buttons\" />
+    <Folder Include="Commands\SelectionCommands\" />
+  </ItemGroup>
+  
+  <ItemGroup>
+    <Compile Remove="Commands\EmptyClass.cs" />
+    <Compile Remove="Commands\MoveRightCommand %28copy%29.cs" />
+    <Compile Remove="Commands\MoveRightCommand %28copy%29.cs" />
+    <Compile Remove="Commands\JumpCommand %28copy%29.cs" />
+  </ItemGroup>
+  
+  <ItemGroup>
+    <Reference Include="MaiLib">
+      <HintPath>Content\MaiLib.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="bin\Debug\net6.0\Chart\Chart\maidata.txt" />
+    <None Include="bin\Debug\net6.0\Chart\maidata.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Update="Chart\001_buckeye_battlecry.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Chart\002_le_regiment.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Chart\002_le_regiment_weird_tuba.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Chart\003_cloudless.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Chart\004_umiyuri_kaiteitan.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+  <Target Name="RestoreDotnetTools" BeforeTargets="Restore">
+    <Message Text="Restoring dotnet tools" Importance="High" />
+    <Exec Command="dotnet tool restore" />
+  </Target>
+</Project>
